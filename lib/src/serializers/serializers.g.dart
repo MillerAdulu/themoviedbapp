@@ -20,9 +20,12 @@ part of serializers;
 // ignore_for_file: test_types_in_equals
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(User.serializer)
-      ..add(UserData.serializer)
+      ..add(Movie.serializer)
+      ..add(MovieData.serializer)
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(User)]),
-          () => new ListBuilder<User>()))
+          const FullType(BuiltList, const [const FullType(Movie)]),
+          () => new ListBuilder<Movie>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(int)]),
+          () => new ListBuilder<int>()))
     .build();

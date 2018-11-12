@@ -10,7 +10,8 @@ class IDMBAPI {
   NetworkUtil _networkUtil = new NetworkUtil();
 
   static final String apiKey = '323f871a3935a91d3b6a8adbf679c86d';
-  static final String baseUrl = 'http://api.themoviedb.org/3/movie/popular?api_key=$apiKey';
+  static final String baseUrl =
+      'http://api.themoviedb.org/3/movie/popular?api_key=$apiKey';
 
   Future<MovieData> getMovies() {
     final String getUsersUrl = '$baseUrl';
@@ -19,8 +20,6 @@ class IDMBAPI {
       if (res == null) return null;
 
       return serializers.deserializeWith(MovieData.serializer, res);
-      // return userData.results.map<Movie>((Movie movie) => movie).toList();
     });
   }
 }
-

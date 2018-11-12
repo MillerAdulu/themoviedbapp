@@ -3,10 +3,26 @@ import 'package:flutter/material.dart';
 import '../models/movies/movie.dart';
 import '../blocs/movies_bloc.dart';
 
-class MovieList extends StatelessWidget {
+class MovieList extends StatefulWidget {
+  @override
+  MovieListState createState() => MovieListState();
+}
+
+class MovieListState extends State<MovieList> {
+  @override
+  void initState() {
+    super.initState();
+    bloc.fetchAllMovies();
+  }
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    bloc.fetchAllMovies();
     return Scaffold(
       appBar: AppBar(
         title: Text('Popular Movies'),
@@ -36,9 +52,8 @@ class MovieList extends StatelessWidget {
           fit: BoxFit.cover,
         );
       },
-      gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2
-      ),
+      gridDelegate:
+          new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
     );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:rxdart/rxdart.dart';
 
-import '../models/movies/movie.dart';
-import '../utils/api.dart';
+import '../../models/movies/movie.dart';
+import '../../utils/api.dart';
 
 class MoviesBloc {
   IDMBAPI _api = new IDMBAPI();

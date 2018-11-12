@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../models/movies/movie.dart';
-import '../blocs/movies_bloc.dart';
+import '../blocs/movies/movies_bloc.dart';
 
-import 'movie_details.dart';
+import 'movie_detail.dart';
+import '../blocs/movies/details/movie_detail_bloc_provider.dart';
 
 class MovieList extends StatefulWidget {
   @override
@@ -67,13 +68,15 @@ class MovieListState extends State<MovieList> {
   openDetailPage(MovieData movieData, int index) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       Movie movie = movieData.results[index];
-      return MovieDetail(
-        title: movie.title,
-        posterUrl: movie.backdrop_path,
-        description: movie.overview,
-        releaseDate: movie.release_date,
-        voteAverage: movie.vote_average.toString(),
-        movieId: movie.id,
+      return MovieDetailBlocProvider(
+        child: MovieDetail(
+          title: movie.title,
+          posterUrl: movie.backdrop_path,
+          description: movie.overview,
+          releaseDate: movie.release_date,
+          voteAverage: movie.vote_average.toString(),
+          movieId: movie.id,
+        ),
       );
     }));
   }

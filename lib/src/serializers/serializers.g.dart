@@ -22,9 +22,14 @@ part of serializers;
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Movie.serializer)
       ..add(MovieData.serializer)
+      ..add(Trailer.serializer)
+      ..add(TrailerData.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Movie)]),
           () => new ListBuilder<Movie>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Trailer)]),
+          () => new ListBuilder<Trailer>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
           () => new ListBuilder<int>()))

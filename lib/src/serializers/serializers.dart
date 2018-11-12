@@ -5,12 +5,15 @@ import 'package:built_value/serializer.dart';
 import 'package:built_value/standard_json_plugin.dart';
 
 import 'package:imdbapp/src/models/movies/movie.dart';
+import 'package:imdbapp/src/models/trailers/trailer.dart';
 
 part 'serializers.g.dart';
 
 @SerializersFor(const [
   MovieData,
   Movie,
+  TrailerData,
+  Trailer,
 ])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

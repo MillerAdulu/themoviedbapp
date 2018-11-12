@@ -129,31 +129,42 @@ class MovieDetailState extends State<MovieDetail> {
                     margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
                   ),
                   Text(description),
-                  Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0),),
-                  Text('Trailer', 
-                  style: TextStyle(fontSize: 25.0,
-                  fontWeight: FontWeight.bold),),
-                  Container(margin: EdgeInsets.only(top: 8.0, bottom: 8.0),),
+                  Container(
+                    margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  ),
+                  Text(
+                    'Trailer',
+                    style:
+                        TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  ),
                   StreamBuilder(
                     stream: _detailBloc.movieTrailers,
-                    builder: (context, AsyncSnapshot<Future<TrailerData>> snapshot) {
+                    builder:
+                        (context, AsyncSnapshot<Future<TrailerData>> snapshot) {
                       if (snapshot.hasData) {
                         return FutureBuilder(
                           future: snapshot.data,
-                          builder: (context, AsyncSnapshot<TrailerData> itemSnapshot) {
-                            if(itemSnapshot.hasData) {
+                          builder: (context,
+                              AsyncSnapshot<TrailerData> itemSnapshot) {
+                            if (itemSnapshot.hasData) {
                               if (itemSnapshot.data.results.length > 0)
-                              return trailerLayout(itemSnapshot.data);
+                                return trailerLayout(itemSnapshot.data);
                               else
-                              return noTrailer(itemSnapshot.data);
-                            }
-                            else {
-                              return Center(child: CircularProgressIndicator(),);
+                                return noTrailer(itemSnapshot.data);
+                            } else {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
                             }
                           },
                         );
                       } else {
-                        return Center(child: CircularProgressIndicator(),);
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
                       }
                     },
                   ),
@@ -173,11 +184,13 @@ class MovieDetailState extends State<MovieDetail> {
   }
 
   Widget trailerLayout(TrailerData data) {
-    if(data.results.length > 1) {
-      return Row(children: <Widget>[
-      trailerItem(data, 0),
-        trailerItem(data, 1),
-      ],);
+    if (data.results.length > 1) {
+      return Row(
+        children: <Widget>[
+          trailerItem(data, 0),
+          trailerItem(data, 1),
+        ],
+      );
     } else {
       return Row(
         children: <Widget>[
@@ -195,7 +208,9 @@ class MovieDetailState extends State<MovieDetail> {
             margin: EdgeInsets.all(5.0),
             height: 100.0,
             color: Colors.grey,
-            child: Center(child: Icon(Icons.play_circle_filled),),
+            child: Center(
+              child: Icon(Icons.play_circle_filled),
+            ),
           ),
           Text(
             data.results[index].name,

@@ -14,12 +14,12 @@ abstract class TrailerData implements Built<TrailerData, TrailerDataBuilder> {
   BuiltList<Trailer> get results;
 
   TrailerData._();
-  factory TrailerData([updates(TrailerDataBuilder trailerDataBuilder)]) = _$TrailerData;
+  factory TrailerData([updates(TrailerDataBuilder trailerDataBuilder)]) =
+      _$TrailerData;
   static Serializer<TrailerData> get serializer => _$trailerDataSerializer;
 }
 
 abstract class Trailer implements Built<Trailer, TrailerBuilder> {
-  
   String get id;
   @nullable
   String get iso_639_1;

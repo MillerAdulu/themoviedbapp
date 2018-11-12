@@ -5,7 +5,7 @@ import '../../../models/trailers/trailer.dart';
 import '../../../utils/api.dart';
 
 class MovieDetailBloc {
-  IDMBAPI _api = new IDMBAPI();
+  final _api = IDMBAPI();
   final _movieId = PublishSubject<int>();
   final _trailers = BehaviorSubject<Future<TrailerData>>();
 
@@ -25,11 +25,9 @@ class MovieDetailBloc {
 
   _itemTransformer() {
     return ScanStreamTransformer(
-      (Future<TrailerData> trailer, int id, int index) {
-        print(index);
-        trailer = _api.getTrailers(id);
-        return trailer;
-      }
-    );
+        (Future<TrailerData> trailer, int id, int index) {
+      trailer = _api.getTrailers(id);
+      return trailer;
+    });
   }
 }

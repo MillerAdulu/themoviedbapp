@@ -2,13 +2,14 @@
 
 ## Introduction
 
-This is a basic app to help you start with flutter
+This is a basic flutter app that uses Reactive Programming to display movie data from the [The Movie Db](https://www.themoviedb.org/)
+
 
 ## Features
-  - Uses the built_value library for deserializing JSON
-  - A network utility to format POST and GET requests before sending to the internet
-  - A simple api api to use for sending requests via the network utility
+  - Uses Reactive Programming [RxDart](http://reactivex.io/)
+  - Uses a public API
 
 ## Installation
 
-Clone this repository and you are ready to start
+  - Clone this repository
+  - Change directory into the folder and `flutter run` with your mobile device
